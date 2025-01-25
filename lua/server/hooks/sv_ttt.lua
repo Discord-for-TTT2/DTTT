@@ -23,8 +23,6 @@ end)
 
 -- Unmute Player
 hook.Add("PlayerSpawn", "DTTTPlayerSpawn", function(ply, transition)
-    addPlayerStates(ply)
-
     if isInternalUnmuteEnabled() and hook.Run("DTTTPreMuteLogic") == nil then
         timer.Simple(0.2, function()
             local can_use_chat = hook.Run("TTT2AvoidGeneralChat", ply, "")
@@ -41,6 +39,8 @@ hook.Add("PlayerSpawn", "DTTTPlayerSpawn", function(ply, transition)
 end)
 
 hook.Add("PlayerInitialSpawn", "DTTTPlayerInitialSpawn", function(ply ,transition)
+    addPlayerStates(ply)
+
     if GetConVar("dttt_auto_map_ids"):GetBool() then
         autoMapId(ply)
     end
