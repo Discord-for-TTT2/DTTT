@@ -111,8 +111,14 @@ end
 
 function addPlayerStates(ply)
     logInfo("Adding states for player " .. ply:Nick())
-    g_dttt_player_states.muted[playerIdToString(ply)] = false
-    g_dttt_player_states.deafened[playerIdToString(ply)] = false
+
+    if not containsPlayerMute(ply) then
+        g_dttt_player_states.muted[playerIdToString(ply)] = false
+    end
+
+    if not containsPlayerDeafen(ply) then
+        g_dttt_player_states.deafened[playerIdToString(ply)] = false
+    end
 end
 
 function removePlayerStates(ply)
