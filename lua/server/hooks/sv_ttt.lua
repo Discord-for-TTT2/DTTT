@@ -16,7 +16,7 @@ end)
 
 -- Mute Player
 hook.Add("TTT2PostPlayerDeath", "DTTTPostPlayerDeath", function(victim, inflictor, attacker)
-    if isInternalMuteEnabled() and hook.Run("DTTTPreMuteLogic") == nil then
+    if isInternalMuteEnabled() and hook.Run("DTTTPreMuteLogic") == nil and getRoundState() == 3 then
         hook.Run("DTTTMute", victim, GetConVar("dttt_mute_duration"):GetInt())
     end
 end)
